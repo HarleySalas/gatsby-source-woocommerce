@@ -19,7 +19,7 @@ const {
 } = require("./helpers/misc-data");
 
 exports.sourceNodes = async (
-  { actions, createNodeId, createContentDigest, store, cache },
+  { actions, createNodeId, createContentDigest, store, cache, getNode },
   configOptions
 ) => {
   const { createNode, touchNode } = actions;
@@ -125,6 +125,7 @@ exports.sourceNodes = async (
       createNode,
       createNodeId,
       touchNode,
+      getNode,
     });
 
     let startTime = new Date().getTime();

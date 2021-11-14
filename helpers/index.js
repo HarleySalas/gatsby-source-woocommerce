@@ -379,22 +379,28 @@ const downloadMedia = async ({
   image,
   store,
   cache,
+  getNode,
   touchNode,
   createNode,
   createNodeId,
 }) => {
   let fileNodeID;
+  let fileNode;
   const mediaDataCacheKey = `wordpress-media-${image.id}`;
   const cacheMediaData = await cache.get(mediaDataCacheKey);
 
   if (cacheMediaData && n.modified === cacheMediaData.modified) {
-    fileNodeID = cacheMediaData.fileNodeID;
-    touchNode({ nodeId: fileNodeID });
+    fileNode = getNode(cacheMediaData.fileNodeID);
+    
+    if (fileNode) {
+      fileNodeID = cacheMediaData.fileNodeID;
+      touchNode(fileNode);
+    }
   }
 
   if (!fileNodeID) {
     try {
-      const fileNode = await createRemoteFileNode({
+      fileNode = await createRemoteFileNode({
         url: image.src,
         store,
         cache,
@@ -427,18 +433,24 @@ const downloadACFMedia = async ({
   src,
   store,
   cache,
+  getNode,
   touchNode,
   createNode,
   createNodeId,
 }) => {
 
   let fileNodeID;
+  let fileNode;
   const mediaDataCacheKey = `woocommerce-acf-media-${src}`;
   const cacheMediaData = await cache.get(mediaDataCacheKey);
 
   if (cacheMediaData && n.modified === cacheMediaData.modified) {
-    fileNodeID = cacheMediaData.fileNodeID;
-    touchNode({ nodeId: fileNodeID });
+    fileNode = getNode(cacheMediaData.fileNodeID);
+    
+    if (fileNode) {
+      fileNodeID = cacheMediaData.fileNodeID;
+      touchNode(fileNode);
+    }
   }
 
   if (!fileNodeID) {
@@ -476,6 +488,7 @@ const mapMediaToNodes = async ({
   createNode,
   createNodeId,
   touchNode,
+  getNode,
 }) => {
   return Promise.all(
     nodes.map(async (n) => {
@@ -486,6 +499,7 @@ const mapMediaToNodes = async ({
         touchNode,
         createNode,
         createNodeId,
+        getNode,
       };
 
       if (n.product_variations && n.product_variations.length) {
