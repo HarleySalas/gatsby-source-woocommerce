@@ -40,18 +40,25 @@ exports.sourceNodes = async (
     verbose = true,
   } = configOptions;
 
+  let WooCommerce;
+
   // set up WooCommerce node api tool
-  const WooCommerce = new WooCommerceRestApi({
-    url: `http${https ? "s" : ""}://${api}`,
-    consumerKey: api_keys.consumer_key,
-    consumerSecret: api_keys.consumer_secret,
-    version: api_version,
-    wpAPIPrefix,
-    queryStringAuth: query_string_auth,
-    port,
-    encoding,
-    axiosConfig: axios_config,
-  });
+  try {
+    WooCommerce = new WooCommerceRestApi({
+      url: `http${https ? "s" : ""}://${api}`,
+      consumerKey: api_keys.consumer_key,
+      consumerSecret: api_keys.consumer_secret,
+      version: api_version,
+      wpAPIPrefix,
+      queryStringAuth: query_string_auth,
+      port,
+      encoding,
+      axiosConfig: axios_config,
+    });
+  } catch (err) {
+    console.error('gatsby-source-woocommerce: Error initialising WooCommerce REST API. Error: ', err);
+    return;
+  }
 
   // Fetch Node data for a given field name
   const fetchNodes = async (fieldName) => {
