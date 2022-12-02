@@ -1,6 +1,6 @@
 {
   "name": "@pasdo501/gatsby-source-woocommerce",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "description": "Gatsby source plugin for WooCommerce with improved field type support",
   "main": "gatsby-node.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
-    "gatsby-source-filesystem": "^5.2.0"
+    "gatsby-source-filesystem": "^4.24.0"
   },
   "repository": {
     "type": "git",

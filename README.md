@@ -375,6 +375,7 @@ Some example queries for the fixed and fluid types are below.
 You can visit [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/) for more information, and to learn about the different types of queries.
 
 ## Changelog
+- 0.17.1: Drop gatsby-source-filesystem version
 - 0.17.0: Revert changing to gatsby-core-utils; update gatsby-source-filesystem version
 - 0.16.1: Change gatsby-core-utils min version number
 - 0.16.0: Replace gatsby-source-filesystem with gatsby-core-utils to avoid some problems with package installation
