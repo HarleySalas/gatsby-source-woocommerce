@@ -375,6 +375,7 @@ Some example queries for the fixed and fluid types are below.
 You can visit [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/) for more information, and to learn about the different types of queries.
 
 ## Changelog
+- 0.16.0: Replace gatsby-source-filesystem with gatsby-core-utils to avoid some problems with package installation
 - 0.15.1: Wrap initialisation of WooCommerce REST API library in try / catch to reduce unhelpful errors.
 - 0.15.0: Fix issue with image download caching logic when using new versions of Gatsby
 - 0.14.0: [Support for Product Attributes with terms](https://github.com/pasdo501/gatsby-source-woocommerce/pull/27). 

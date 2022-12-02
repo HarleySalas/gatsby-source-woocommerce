@@ -1,4 +1,4 @@
-const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+const { createRemoteFileNode } = require(`gatsby-core-utils`);
 
 /**
  * Add date and time stamp to message before logging to console.
